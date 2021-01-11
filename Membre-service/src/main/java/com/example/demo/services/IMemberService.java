@@ -5,6 +5,8 @@ import java.util.List;
 import com.example.demo.beans.EvenementBean;
 import com.example.demo.beans.OutilBean;
 import com.example.demo.beans.PublicationBean;
+import com.example.demo.entities.EnseignantChercheur;
+import com.example.demo.entities.Etudiant;
 import com.example.demo.entities.Member;
 import com.example.demo.entities.Membre_Event_Ids;
 import com.example.demo.entities.Membre_Outil_Ids;
@@ -46,5 +48,9 @@ public interface IMemberService {
 	public void removeAuteurfromOutil(Membre_Outil_Ids membre_outil);
 	
 	public List<Member> findauteuroutil(Long idoutil);
+	
+	List<EnseignantChercheur> findAllTeachers();
+	
+	List<Etudiant> findAllStudents();
 	
 }

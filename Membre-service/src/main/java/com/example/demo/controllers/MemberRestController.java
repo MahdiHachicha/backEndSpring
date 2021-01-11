@@ -31,6 +31,15 @@ public class MemberRestController {
 	public List<Member> findMembres() {
 		return memberService.findAll();
 	}
+	
+	@RequestMapping(value = "/etudiants", method = RequestMethod.GET)
+	public List<Etudiant> findEtudiants() {
+		return memberService.findAllStudents();
+	}
+	@RequestMapping(value = "/enseignants", method = RequestMethod.GET)
+	public List<EnseignantChercheur> findEnseignats() {
+		return memberService.findAllTeachers();
+	}
 
 	@GetMapping(value = "/membre/{id}")
 	public Member findOneMemberById(@PathVariable Long id) {
@@ -102,7 +111,15 @@ public class MemberRestController {
 
 	@PostMapping(value = "/membres/enseignant")
 
-	public Member addMembre(@RequestBody EnseignantChercheur m)
+	public Member addEnseignant(@RequestBody EnseignantChercheur m)
+
+	{
+		return memberService.addMember(m);
+
+	}
+	@PostMapping(value = "/membres/etudiant")
+
+	public Member addEtudiant(@RequestBody Etudiant m)
 
 	{
 		return memberService.addMember(m);
