@@ -120,10 +120,18 @@ public class MemberImpl implements IMemberService {
 		
 	}
 	
+	
 	@Override
 	public void removeOrganisateurfromEvenement(Membre_Event_Ids membre_event) {
 		Membre_Evenement mbs = membreevenrepository.findById(membre_event).get();
 		membreevenrepository.delete(mbs);;
+		}
+	
+	
+	@Override
+	public void removeAuteurfromOutil(Membre_Outil_Ids membre_outil) {
+		Membre_Outil mbs = membreoutilrepository.findById(membre_outil).get();
+		membreoutilrepository.delete(mbs);;
 		}
 
 	@Override
@@ -147,6 +155,20 @@ public class MemberImpl implements IMemberService {
 			System.out.println(s);
 			members.add(memberRepository.findById(
 					s.getId().getOrganisateur_id()).get());
+		});
+		
+		return members;
+	}
+	
+	
+	@Override
+	public List<Member> findauteuroutil(Long idoutil) {
+		List<Member> members= new ArrayList<Member>();
+		List<Membre_Outil> idmembers = membreoutilrepository.findmemberId(idoutil);
+		idmembers.forEach(s-> {
+			System.out.println(s);
+			members.add(memberRepository.findById(
+					s.getId().getUtilisateur_id()).get());
 		});
 		
 		return members;

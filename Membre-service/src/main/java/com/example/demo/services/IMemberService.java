@@ -7,6 +7,7 @@ import com.example.demo.beans.OutilBean;
 import com.example.demo.beans.PublicationBean;
 import com.example.demo.entities.Member;
 import com.example.demo.entities.Membre_Event_Ids;
+import com.example.demo.entities.Membre_Outil_Ids;
 
 public interface IMemberService {
 	// Crud sur les membres
@@ -40,6 +41,10 @@ public interface IMemberService {
 	
 	public List<OutilBean>findOutilparutilisateur (Long idutilisateur);
 
-	List<Member> findorganisteurevenement(Long idevenement);
+	public List<Member> findorganisteurevenement(Long idevenement);
+	
+	public void removeAuteurfromOutil(Membre_Outil_Ids membre_outil);
+	
+	public List<Member> findauteuroutil(Long idoutil);
 	
 }

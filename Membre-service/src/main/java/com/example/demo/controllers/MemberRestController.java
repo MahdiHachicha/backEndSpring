@@ -18,6 +18,7 @@ import com.example.demo.entities.EnseignantChercheur;
 import com.example.demo.entities.Etudiant;
 import com.example.demo.entities.Member;
 import com.example.demo.entities.Membre_Event_Ids;
+import com.example.demo.entities.Membre_Outil_Ids;
 import com.example.demo.services.IMemberService;
 
 @RestController
@@ -36,14 +37,17 @@ public class MemberRestController {
 		return memberService.findMember(id);
 	}
 	
-	@GetMapping(value = "/membres/event/{id}")
-	public List<Member> findMemberByEventId(@PathVariable Long id) {
-		return memberService.findorganisteurevenement(id);
-	}
-
+	
 	@GetMapping(value = "/membre/search/cin/{cin}")
 	public Member findOneMemberByCin(@PathVariable String cin) {
 		return memberService.findByCin(cin);
+	}
+	
+	//Get,Add & remove member to event
+	
+	@GetMapping(value = "/membres/event/{id}")
+	public List<Member> findMemberByEventId(@PathVariable Long id) {
+		return memberService.findorganisteurevenement(id);
 	}
 	
 	@PostMapping(value = "/membres/event/addParticipant")
@@ -61,6 +65,33 @@ public class MemberRestController {
 
 	{
 		 memberService.removeOrganisateurfromEvenement(membre_event);
+
+	}
+	
+	//Get,Add & remove member to tool
+	
+	@GetMapping(value = "/membres/outil/{id}")
+	public List<Member> findMemberByOutilId(@PathVariable Long id) {
+		return memberService.findauteuroutil(id);
+	}
+
+	
+	@PostMapping(value = "/membres/outil/addAuteur")
+
+	public void addAuteur(@RequestBody Membre_Outil_Ids membre_outil)
+
+	{
+		 memberService.affecterUtilisateurToOutil(membre_outil.getUtilisateur_id(), membre_outil.getOutil_id());
+
+	}
+	
+	
+	@PostMapping(value = "/membres/outil/removeAuteur")
+
+	public void removeAuteur(@RequestBody Membre_Outil_Ids membre_outil)
+
+	{
+		 memberService.removeAuteurfromOutil(membre_outil);
 
 	}
 
