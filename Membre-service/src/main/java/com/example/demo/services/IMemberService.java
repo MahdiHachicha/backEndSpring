@@ -5,6 +5,8 @@ import java.util.List;
 import com.example.demo.beans.EvenementBean;
 import com.example.demo.beans.OutilBean;
 import com.example.demo.beans.PublicationBean;
+import com.example.demo.entities.EnseignantChercheur;
+import com.example.demo.entities.Etudiant;
 import com.example.demo.entities.Member;
 import com.example.demo.entities.Membre_Event_Ids;
 
@@ -41,5 +43,9 @@ public interface IMemberService {
 	public List<OutilBean>findOutilparutilisateur (Long idutilisateur);
 
 	List<Member> findorganisteurevenement(Long idevenement);
+	
+	List<EnseignantChercheur> findAllTeachers();
+	
+	List<Etudiant> findAllStudents();
 	
 }

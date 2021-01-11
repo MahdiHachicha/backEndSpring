@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.example.demo.beans.EvenementBean;
 import com.example.demo.beans.OutilBean;
 import com.example.demo.beans.PublicationBean;
+import com.example.demo.dao.EnseignantChercheurRepository;
+import com.example.demo.dao.EtudiantRepository;
 import com.example.demo.dao.MemberRepository;
 import com.example.demo.dao.MembreEvenRepository;
 import com.example.demo.dao.MembreOutilRepository;
@@ -29,6 +31,10 @@ import com.netflix.discovery.converters.Auto;
 
 @Service
 public class MemberImpl implements IMemberService {
+	@Autowired
+	EnseignantChercheurRepository enseignantchercheurrepository;
+	@Autowired
+	EtudiantRepository etudiantrepository;
 
 	@Autowired
 	MemberRepository memberRepository;
@@ -171,6 +177,16 @@ public class MemberImpl implements IMemberService {
 					s.getId().getOutil_id()).getContent());
 		});
 		return outils;
+	}
+
+	@Override
+	public List<EnseignantChercheur> findAllTeachers() {
+		return enseignantchercheurrepository.findAll();
+	}
+
+	@Override
+	public List<Etudiant> findAllStudents() {
+		return etudiantrepository.findAll();
 	}
 
 }
