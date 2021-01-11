@@ -163,5 +163,12 @@ public class MemberRestController {
 		return mbr;
 
 	}
+	
+	@PostMapping(value = "/students/enseignant")
+	public List<Etudiant> findStudentsByEncadrant(@RequestBody EnseignantChercheur enseignant)
+
+	{
+		return memberService.findStudentsByEncadrant(enseignant);
+	}
 
 }

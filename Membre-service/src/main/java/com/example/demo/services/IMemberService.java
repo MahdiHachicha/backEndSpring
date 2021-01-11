@@ -49,8 +49,10 @@ public interface IMemberService {
 	
 	public List<Member> findauteuroutil(Long idoutil);
 	
-	List<EnseignantChercheur> findAllTeachers();
+	public List<EnseignantChercheur> findAllTeachers();
 	
-	List<Etudiant> findAllStudents();
+	public List<Etudiant> findAllStudents();
+	
+	public List <Etudiant> findStudentsByEncadrant (EnseignantChercheur enseignant);
 	
 }

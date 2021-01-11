@@ -210,5 +210,9 @@ public class MemberImpl implements IMemberService {
 	public List<Etudiant> findAllStudents() {
 		return etudiantrepository.findAll();
 	}
+	
+	public List <Etudiant> findStudentsByEncadrant (EnseignantChercheur enseignant) {
+		return etudiantrepository.findByEncadrant(enseignant);
+	}
 
 }
