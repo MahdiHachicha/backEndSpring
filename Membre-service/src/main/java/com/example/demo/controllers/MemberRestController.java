@@ -80,7 +80,7 @@ public class MemberRestController {
 
 	@PostMapping(value = "/membres/enseignant")
 
-	public Member addMembre(@RequestBody EnseignantChercheur m)
+	public Member addEnseignant(@RequestBody EnseignantChercheur m)
 
 	{
 		return memberService.addMember(m);
@@ -88,7 +88,7 @@ public class MemberRestController {
 	}
 	@PostMapping(value = "/membres/etudiant")
 
-	public Member addMembre(@RequestBody Etudiant m)
+	public Member addEtudiant(@RequestBody Etudiant m)
 
 	{
 		return memberService.addMember(m);
