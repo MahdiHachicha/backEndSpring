@@ -138,7 +138,18 @@ public class MemberRestController {
 
 	@PutMapping(value = "/membres/etudiant/{id}")
 
-	public Member updatemembre(@PathVariable Long id, @RequestBody Etudiant p)
+	public Member updateStudent(@PathVariable Long id, @RequestBody Etudiant p)
+
+	{
+
+		p.setId(id);
+		return memberService.updateMember(p);
+
+	}
+	
+	@PutMapping(value = "/membres/enseignant/{id}")
+
+	public Member updateTeacher(@PathVariable Long id, @RequestBody EnseignantChercheur p)
 
 	{
 
