@@ -215,4 +215,23 @@ public class MemberImpl implements IMemberService {
 		return etudiantrepository.findByEncadrant(enseignant);
 	}
 
+	@Override
+	public List<Member> findauteurParpublication(Long idPublication) {
+		List<Member> members= new ArrayList<Member>();
+		List<Membre_Publication> idmembers = membrepubrepository.findmemberId(idPublication);
+		idmembers.forEach(s-> {
+			System.out.println(s);
+			members.add(memberRepository.findById(
+					s.getId().getAuteur_id()).get());
+		});
+		
+		return members;
+	}
+
+	@Override
+	public void removeAuteurfromPublication(Membre_Pub_Ids membre_publication) {
+		Membre_Publication mbs = membrepubrepository.findById(membre_publication).get();
+		membrepubrepository.delete(mbs);;		
+	}
+
 }

@@ -16,4 +16,7 @@ public interface MembrePubRepository extends JpaRepository<Membre_Publication, M
 
 	@Query("select m from Membre_Publication m where auteur_id=:x")
 	List<Membre_Publication> findpubId(@Param("x") Long x);
+
+	@Query("select m from Membre_Publication m where publication_id=:x")
+	List<Membre_Publication> findmemberId(@Param("x") Long x);
 }

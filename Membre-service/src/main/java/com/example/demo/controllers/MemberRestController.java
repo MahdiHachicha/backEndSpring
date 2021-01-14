@@ -19,6 +19,7 @@ import com.example.demo.entities.Etudiant;
 import com.example.demo.entities.Member;
 import com.example.demo.entities.Membre_Event_Ids;
 import com.example.demo.entities.Membre_Outil_Ids;
+import com.example.demo.entities.Membre_Pub_Ids;
 import com.example.demo.services.IMemberService;
 
 @RestController
@@ -76,6 +77,30 @@ public class MemberRestController {
 		 memberService.removeOrganisateurfromEvenement(membre_event);
 
 	}
+	//publication
+	@GetMapping(value = "/membres/publication/{id}")
+	public List<Member> findMemberByPublicationId(@PathVariable Long id) {
+		return memberService.findauteurParpublication(id);
+	}
+	
+	@PostMapping(value = "/membres/publication/addAuteur")
+
+	public void addAuteurToPublication(@RequestBody Membre_Pub_Ids membre_publication)
+
+	{
+		 memberService.affecterAuteurToPublication(membre_publication.getAuteur_id(), membre_publication.getPublication_id());
+
+	}
+	
+	@PostMapping(value = "/membres/publication/removeAuteur")
+
+	public void removeAuteurFromPublication(@RequestBody Membre_Pub_Ids membre_publication)
+
+	{
+		 memberService.removeAuteurfromPublication(membre_publication);
+
+	}
+
 	
 	//Get,Add & remove member to tool
 	
@@ -181,5 +206,51 @@ public class MemberRestController {
 	{
 		return memberService.findStudentsByEncadrant(enseignant);
 	}
+	
+	@DeleteMapping(value = "/member/event/delete/{idEvnt}")
+
+    public void deleteMembreEventOfEvent(@PathVariable Long idEvnt)
+
+    {
+
+        List<Member> mbrs = memberService.findorganisteurevenement(idEvnt);
+
+        if (mbrs.size() != 0 && mbrs != null) {
+            for (Member mbr : mbrs) {
+                memberService.removeOrganisateurfromEvenement(new Membre_Event_Ids(idEvnt, mbr.getId()));
+            }
+        }
+
+    }
+	@DeleteMapping(value = "/member/outil/delete/{idOutil}")
+
+    public void deleteMembreOutilOfOutil(@PathVariable Long idOutil)
+
+    {
+
+        List<Member> mbrs = memberService.findauteuroutil(idOutil);
+
+        if (mbrs.size() != 0 && mbrs != null) {
+            for (Member mbr : mbrs) {
+                memberService.removeAuteurfromOutil(new Membre_Outil_Ids(idOutil, mbr.getId()));
+            }
+        }
+
+    }
+	@DeleteMapping(value = "/member/publication/delete/{idPublication}")
+
+    public void deleteMembrePublicationOfPublication(@PathVariable Long idPublication)
+
+    {
+
+        List<Member> mbrs = memberService.findauteurParpublication(idPublication);
+
+        if (mbrs.size() != 0 && mbrs != null) {
+            for (Member mbr : mbrs) {
+                memberService.removeAuteurfromPublication(new Membre_Pub_Ids(idPublication, mbr.getId()));
+            }
+        }
+
+    }
 
 }

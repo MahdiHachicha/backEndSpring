@@ -10,6 +10,7 @@ import com.example.demo.entities.Etudiant;
 import com.example.demo.entities.Member;
 import com.example.demo.entities.Membre_Event_Ids;
 import com.example.demo.entities.Membre_Outil_Ids;
+import com.example.demo.entities.Membre_Pub_Ids;
 
 public interface IMemberService {
 	// Crud sur les membres
@@ -54,5 +55,9 @@ public interface IMemberService {
 	public List<Etudiant> findAllStudents();
 	
 	public List <Etudiant> findStudentsByEncadrant (EnseignantChercheur enseignant);
+	
+	public List<Member> findauteurParpublication(Long idPublication);
+	
+	public void removeAuteurfromPublication(Membre_Pub_Ids membre_publication);
 	
 }
