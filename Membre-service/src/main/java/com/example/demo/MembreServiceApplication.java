@@ -48,7 +48,7 @@ public class MembreServiceApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {	
 		
 		Date date1=new Date();
-		byte[] photo = null;
+		String photo = null;
 		// Creation
 		Member etd1 = new Etudiant(null, "rebai", "yassin", "1111", date1, photo, "cv", "email", "123456789", date1,
 				"diplôme",null);

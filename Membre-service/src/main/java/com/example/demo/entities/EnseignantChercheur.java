@@ -25,7 +25,7 @@ public class EnseignantChercheur extends Member  {
 	private String grade;
 	private String etablissement;
 
-	public EnseignantChercheur(Long id, String cin, String nom, String prenom, Date date, byte[] photo, String cv,
+	public EnseignantChercheur(Long id, String cin, String nom, String prenom, Date date, String photo, String cv,
 			String email, String password, String grade, String etablissement) {
 		super(id, cin, nom, prenom, date, photo, cv, email, password);
 		this.grade = grade;
@@ -48,7 +48,7 @@ public class EnseignantChercheur extends Member  {
 		this.etablissement = etablissement;
 	}
 
-	public EnseignantChercheur(Long id, String nom, String prenom, String cin, Date date, byte[] photo, String cv,
+	public EnseignantChercheur(Long id, String nom, String prenom, String cin, Date date, String photo, String cv,
 			String email, String password) {
 		super(id, nom, prenom, cin, date, photo, cv, email, password);
 	}

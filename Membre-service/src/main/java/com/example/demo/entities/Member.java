@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Lob;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -41,7 +42,8 @@ public abstract class Member  {
 	private String prenom;
 	@Temporal(TemporalType.DATE)
 	private java.util.Date date;
-	private byte[] photo;
+	@Lob
+	private String photo;
 	private String cv;
 	private String email;
 	private String password;
@@ -56,7 +58,7 @@ public abstract class Member  {
 	
 	
 	
-	public Member(Long id ,String nom, String prenom, String cin, Date date, byte[] photo, String cv, String email,String password) {
+	public Member(Long id ,String nom, String prenom, String cin, Date date, String photo, String cv, String email,String password) {
         super();
         this.id = id;
         this.nom = nom;
@@ -118,12 +120,12 @@ public abstract class Member  {
 	}
 
 
-	public byte[] getPhoto() {
+	public String getPhoto() {
 		return photo;
 	}
 
 
-	public void setPhoto(byte[] photo) {
+	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
 

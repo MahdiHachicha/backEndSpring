@@ -24,7 +24,7 @@ public class Etudiant extends Member  {
 	@ManyToOne
 	private EnseignantChercheur encadrant;
 	@Builder
-	public Etudiant(Long id, String cin, String nom, String prenom, Date date, byte[] photo, String cv, String email,
+	public Etudiant(Long id, String cin, String nom, String prenom, Date date, String photo, String cv, String email,
 			String password, Date dateInscription, String diplome, EnseignantChercheur encadrant) {
 		super(id, cin, nom, prenom, date, photo, cv, email, password);
 		this.dateInscription = dateInscription;
@@ -49,7 +49,7 @@ public class Etudiant extends Member  {
 	public void setEncadrant(EnseignantChercheur encadrant) {
 		this.encadrant = encadrant;
 	}
-	public Etudiant(Long id, String nom, String prenom, String cin, Date date, byte[] photo, String cv, String email,
+	public Etudiant(Long id, String nom, String prenom, String cin, Date date, String photo, String cv, String email,
 			String password) {
 		super(id, nom, prenom, cin, date, photo, cv, email, password);
 	}
