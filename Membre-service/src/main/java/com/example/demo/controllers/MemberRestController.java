@@ -129,8 +129,8 @@ public class MemberRestController {
 
 	}
 
-	@GetMapping(value = "/membre/search/email")
-	public Member findOneMemberByEmail(@RequestParam String email) {
+	@GetMapping(value = "/membre/search/email/{email}")
+	public Member findOneMemberByEmail(@PathVariable String email) {
 		return memberService.findByEmail(email);
 	}
 
