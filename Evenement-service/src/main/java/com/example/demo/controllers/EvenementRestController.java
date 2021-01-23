@@ -41,8 +41,8 @@ public class EvenementRestController {
 	}
 	
 	@PostMapping(value="/evenement/add")
-	public void addEvenement(@RequestBody Evenement e) {
-		evenementservice.addEvenement(e);
+	public Evenement addEvenement(@RequestBody Evenement e) {
+		return evenementservice.addEvenement(e);
 	}
 	
 	@PutMapping(value = "/evenements/{id}")
